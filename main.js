@@ -1,6 +1,8 @@
-var map = {
-  "grid": [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+import Map from './classes/map';
+import Station from './classes/station';
+import Train from './classes/train';
+
+let grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -15,22 +17,9 @@ var map = {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  ],
-  // 0: land
-  // 1: river
-  // 2: square station
-  "cells": {
-    0: {
-      "fillStyle": 'rgba(100, 245, 100, 0.5)', // beige: 'rgba(240, 245, 220, 1)'
-      "padding": 2,
-    },
-    1: {
-      "fillStyle": 'rgba(60, 180, 210, 1)',
-      "padding": 2,
-    }
-  },
-  "stations": []
-}
+  ]
+
+var map = new Map(grid, [])
 
 // when the window loads, this is executed
 function setup() {
@@ -106,25 +95,6 @@ function drawStations(ctx, stations) {
     var station = stations[i];
     station.draw(ctx);
   }
-}
-
-function Station(x, y, map) {
-  this.x = x
-  this.y = y
-  this.map = map
-
-  this.draw = function(ctx) {
-    drawCell(this.x, this.y, this.map, ctx,
-            {'fillStyle': 'rgba(0, 0, 0, 1)',
-            'padding': 0});
-    drawCell(this.x, this.y, this.map, ctx,
-            {'fillStyle': 'rgba(255, 255, 255, 1)',
-            'padding': 10});
-  }
-}
-
-function Train(map) {
-  this.wagons = []
 }
 
 function gameOver() {
