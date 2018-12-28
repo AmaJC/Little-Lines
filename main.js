@@ -3,13 +3,13 @@ var map = {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -67,15 +67,16 @@ function newGame(map) {
     canvas.height / map.height);
   map.cell_dimension = cell_dimension
 
-  var station1 = new Station(map);
+  var station1 = new Station(1, 1, map);
+  var station2 = new Station(10, 2, map);
   map.stations.push(station1);
+  map.stations.push(station2);
 }
 
 function draw(ctx, map) {
   if (!map.pause) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawMap(ctx, map);
-    //drawPlayers(ctx, map.players);
     drawStations(ctx, map.stations);
   }
   window.requestAnimationFrame(function() {
@@ -96,7 +97,6 @@ function drawCell(x, y, map, ctx, styles) {
 }
 
 function drawMap(ctx, map) {
-  ctx.fillStyle = 'rgba(0, 0, 200, 0.25)';
   for (var i = 0; i < map.grid.length; i++) {
     for (var j = 0; j < map.grid[0].length; j++) {
       drawCell(j, i, map, ctx)
@@ -111,26 +111,24 @@ function drawStations(ctx, stations) {
   }
 }
 
-function Station(map) {
-  this.x = 1
-  this.y = 1
+function Station(x, y, map) {
+  this.x = x
+  this.y = y
   this.map = map
 
-  // draw the station
   this.draw = function(ctx) {
     drawCell(this.x, this.y, this.map, ctx,
             {'fillStyle': 'rgba(0, 0, 0, 1)',
             'padding': 0});
     drawCell(this.x, this.y, this.map, ctx,
-            {'fillStyle': 'rgba(200, 255, 255, 1)',
-            'padding': 15});
+            {'fillStyle': 'rgba(255, 255, 255, 1)',
+            'padding': 10});
   }
 }
 
 function Train(map) {
   this.wagons = []
 }
-
 
 function gameOver() {
   document.getElementById('game').style.display = 'none'
