@@ -27,10 +27,6 @@ var map = {
     1: {
       "fillStyle": 'rgba(60, 180, 210, 1)',
       "padding": 2,
-    },
-    2: {
-      "fillStyle": 'rgba(60, 180, 210, 1)',
-      "padding": 2,
     }
   },
   "stations": []
@@ -78,6 +74,7 @@ function draw(ctx, map) {
     //drawPlayers(ctx, map.players);
     drawStations(ctx, map.stations);
   }
+
   window.requestAnimationFrame(function() {
     draw(ctx, map)
   });
@@ -118,12 +115,7 @@ function Station(map) {
 
   // draw the station
   this.draw = function(ctx) {
-    drawCell(this.x, this.y, this.map, ctx,
-            {'fillStyle': 'rgba(0, 0, 0, 1)',
-            'padding': 0});
-    drawCell(this.x, this.y, this.map, ctx,
-            {'fillStyle': 'rgba(200, 255, 255, 1)',
-            'padding': 15});
+    drawCell(this.x, this.y, this.map, ctx,);
   }
 }
 
