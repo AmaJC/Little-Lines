@@ -64,7 +64,6 @@ function newGame(map) {
     document.getElementById('start').style.display = 'none'
     document.getElementById('date').innerHTML = 'Mon'
     document.getElementById('score').innerHTML = 0
-
     map.pause = false
     map.stations = []
     map.width = map.grid[0].length
@@ -79,6 +78,8 @@ function newGame(map) {
     var station2 = new Station(10, 2, map);
     map.stations.push(station1);
     map.stations.push(station2);
+
+    setup();
 }
 
 function draw(ctx, map) {
