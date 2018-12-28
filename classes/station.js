@@ -1,4 +1,4 @@
-export function Station(x, y, map) {
+function Station(x, y, map) {
   this.x = x
   this.y = y
   this.map = map

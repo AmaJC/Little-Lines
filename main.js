@@ -1,7 +1,3 @@
-import Map from './classes/map';
-import Station from './classes/station';
-import Train from './classes/train';
-
 let grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -24,7 +20,7 @@ var map = new Map(grid, [])
 // when the window loads, this is executed
 function setup() {
   var canvas = document.getElementById('canvas');
-  canvas_dim = Math.min(document.body.clientWidth, document.body.clientHeight);
+  var canvas_dim = Math.min(document.body.clientWidth, document.body.clientHeight);
   canvas.width = canvas_dim;
   canvas.height = canvas_dim;
   map.pause = true

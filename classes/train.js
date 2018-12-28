@@ -1,3 +1,3 @@
-export function Train(map) {
+function Train(map) {
   this.wagons = []
 }
