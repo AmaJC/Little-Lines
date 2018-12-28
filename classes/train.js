@@ -1,3 +1,5 @@
-function Train(map) {
-  this.wagons = []
+class Train {
+	constructor(map) {
+		this.wagons = []
+	}
 }

@@ -1,4 +1,5 @@
-let grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+let grid = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -68,7 +69,7 @@ function draw(ctx, map) {
 
 function drawCell(x, y, map, ctx, styles) {
   if (styles === undefined) {
-    var styles = map.cells[map.grid[y][x]];
+    var styles = Map.cells[map.grid[y][x]];
   }
   ctx.fillStyle = styles.fillStyle;
   ctx.fillRect(
